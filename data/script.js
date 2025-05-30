@@ -15,19 +15,13 @@ function createJoystick(zoneId, side) {
   joystick.on('move', (evt, data) => {
     if (!data) return;
 
-    const distance = data.distance || 0;
     const y = data.vector.y || 0;
 
-    const frontEl = data.instance.ui[0].front;
-    frontEl.style.transform = `translate(0px, ${-distance * y}px)`;
-
+    // Надсилаємо тільки вертикальне значення
     socket.send(JSON.stringify({ side, power: y.toFixed(2) }));
   });
 
   joystick.on('end', () => {
-    const frontEl = joystick[0]?.ui?.[0]?.front;
-    if (frontEl) frontEl.style.transform = 'translate(0px, 0px)';
-
     socket.send(JSON.stringify({ side, power: 0 }));
   });
 }
