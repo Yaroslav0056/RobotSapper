@@ -1,0 +1,21 @@
+body {
+  text-align: center;
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+}
+
+.joystick-container {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.zone {
+  width: 100px;
+  height: 300px;
+  background-color: #ddd;
+  border-radius: 10px;
+  position: relative;
+}
